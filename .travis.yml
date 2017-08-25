@@ -1,0 +1,9 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+env:
+  - TEST_DIR=fc-java-events
+  - TEST_DIR=fc-java-core
+script: cd $TEST_DIR  && mvn clean package install 
