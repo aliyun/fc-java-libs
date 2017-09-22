@@ -14,7 +14,8 @@ public interface PojoRequestHandler<I, O> {
      * Handles a function compute invoke request
      * @param input The function input as a Pojo
      * @param context The function execution environment context object.
+     * @throws Exception any checked user exceptions
      * @return The function output as a Pojo
      */
-    public O handleRequest(I input, Context context);
+    public O handleRequest(I input, Context context) throws Exception;
 }

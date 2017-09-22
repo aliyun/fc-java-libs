@@ -4,10 +4,10 @@ fc-java-libs
 [![maven version][mvn-image]][mvn-url]
 [![build status][travis-image]][travis-url]
 
-[mvn-image]: https://img.shields.io/maven-central/v/com.aliyun/aliyun-java-sdk-fc.svg?style=flat-square
-[mvn-url]: http://search.maven.org/#search%7Cga%7C1%7Caliyun-java-sdk-fc
-[travis-image]: https://img.shields.io/travis/aliyun/fc-java-sdk/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/aliyun/fc-java-sdk.svg?branch=master
+[mvn-image]: https://img.shields.io/maven-central/v/com.aliyun.fc.runtime/fc-java-event.svg?style=flat-square
+[mvn-url]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22fc-java-core%22
+[travis-image]: https://img.shields.io/travis/aliyun/fc-java-libs/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/aliyun/fc-java-libs.svg?branch=master
 
 ## Requirements
 
@@ -17,7 +17,22 @@ fc-java-libs
 
 [APACHE2.0](LICENSE)
 
+## Install
 
+Add the following Maven dependencies into pom.xml
+
+```xml
+<dependency>
+  <groupId>com.aliyun.fc.runtime</groupId>
+  <artifactId>fc-java-event</artifactId>
+  <version>1.1.0</version>
+</dependency>
+<dependency>
+  <groupId>com.aliyun.fc.runtime</groupId>
+  <artifactId>fc-java-core</artifactId>
+  <version>1.1.0</version>
+</dependency>
+```
 ## Example
 
 Here is a simple Java function that just echo the input with request ID

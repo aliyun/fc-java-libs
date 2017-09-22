@@ -6,4 +6,4 @@ jdk:
 env:
   - TEST_DIR=fc-java-events
   - TEST_DIR=fc-java-core
-script: cd $TEST_DIR  && mvn clean package install 
+script: cd $TEST_DIR  && mvn clean package install -DskipTests -Dgpg.skip
