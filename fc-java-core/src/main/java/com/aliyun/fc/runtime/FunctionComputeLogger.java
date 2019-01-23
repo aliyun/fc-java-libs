@@ -44,6 +44,20 @@ public interface FunctionComputeLogger {
      * @param string A string containing the event to log.
      */
     void error(String string);
+    
+    /**
+     * Logs an fatal level event to alibaba cloud logstore
+     *
+     * @param string A string containing the event to log.
+     */
+    void fatal(String string);
+    
+    /**
+     * Set log level for this logger
+     * 
+     * @param level
+     */
+    void setLogLevel(Level level);
 
     enum Level {
         TRACE, DEBUG, INFO, WARN, ERROR, FATAL

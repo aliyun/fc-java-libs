@@ -16,6 +16,13 @@ public interface FunctionParam {
     public String getFunctionHandler();
 
     /**
+     * Gets the fully qualified name of the initializer being executed.
+     * 
+     * @return String
+     */
+    public String getFunctionInitializer();
+    
+    /**
      * Gets the execution time limit of the function
      */
     public int getExecTimeLimitInMillis();
