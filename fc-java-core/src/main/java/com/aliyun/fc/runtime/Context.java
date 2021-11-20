@@ -35,6 +35,13 @@ public interface Context {
      * @return The fc logger
      */
     public FunctionComputeLogger getLogger();
+
+    /**
+     * Gets the function compute opentracing instance associated with the context object
+     * 
+     * @return The fc tracing
+     */
+    public OpenTracing getTracing();
 }
 
 
