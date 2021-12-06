@@ -9,7 +9,6 @@
      <properties>
         <project.tomcat.version>8.5.20</project.tomcat.version>
         <project.java.version>1.8</project.java.version>
-        <project.log4j.version>2.8.2</project.log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <packaging>jar</packaging>
@@ -55,18 +54,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
-        </dependency>
-        
-        <!-- log4j -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${project.log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${project.log4j.version}</version>
         </dependency>
         
         <!-- oss -->
