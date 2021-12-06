@@ -30,6 +30,13 @@ public interface Context {
     public FunctionParam getFunctionParam();
 
     /**
+     * Gets the service related parameters
+     * 
+     * @return The request service info
+     */
+    public Service getService();
+
+    /**
      * Gets the function compute logger instance associated with the context object
      * 
      * @return The fc logger
@@ -42,6 +49,13 @@ public interface Context {
      * @return The fc tracing
      */
     public OpenTracing getTracing();
+
+     /**
+     * Gets the function compute retry count associated with the context object
+     * 
+     * @return The retry count
+     */
+    public int getRetryCount();
 }
 
 
