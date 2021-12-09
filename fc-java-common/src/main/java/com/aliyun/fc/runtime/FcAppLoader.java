@@ -74,6 +74,11 @@ public class FcAppLoader implements AppLoader {
     @Override
     public Boolean loadCodeFromOSS(String ossEndPoint, String bucket, String appName) {
         appFilePath = downloadPath + File.separator + appName;
+        File appFile = new File(appFilePath);
+        File appDirFile = appFile.getParentFile();
+        if(! appDirFile.exists()) {
+            appDirFile.mkdirs();
+        }
         
         try {
             OSSClient ossClient = null;
@@ -92,7 +97,7 @@ public class FcAppLoader implements AppLoader {
             }
 
             GetObjectRequest request = new GetObjectRequest(bucket, appName);
-            ossClient.getObject(request, new File(appFilePath));
+            ossClient.getObject(request, appFile);
         } catch (Exception e) {
             return false;
         }
