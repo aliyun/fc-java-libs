@@ -1,5 +1,7 @@
 package com.aliyun.fc.runtime.event;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -26,14 +28,14 @@ public final class OSSEvent {
 
         @JsonCreator
         public Event(@JsonProperty("eventName") String eventName,
-            @JsonProperty("eventSource") String eventSource,
-            @JsonProperty("eventTime") String eventTime,
-            @JsonProperty("eventVersion") String eventVersion,
-            @JsonProperty("oss") Oss oss,
-            @JsonProperty("region") String region,
-            @JsonProperty("requestParameters") RequestParameters requestParameters,
-            @JsonProperty("responseElements") ResponseElements responseElements,
-            @JsonProperty("userIdentity") UserIdentity userIdentity) {
+                     @JsonProperty("eventSource") String eventSource,
+                     @JsonProperty("eventTime") String eventTime,
+                     @JsonProperty("eventVersion") String eventVersion,
+                     @JsonProperty("oss") Oss oss,
+                     @JsonProperty("region") String region,
+                     @JsonProperty("requestParameters") RequestParameters requestParameters,
+                     @JsonProperty("responseElements") ResponseElements responseElements,
+                     @JsonProperty("userIdentity") UserIdentity userIdentity) {
             this.eventName = eventName;
             this.eventSource = eventSource;
             this.eventTime = eventTime;
@@ -54,9 +56,9 @@ public final class OSSEvent {
 
             @JsonCreator
             public Oss(@JsonProperty("bucket") Bucket bucket,
-                @JsonProperty("object") Object object,
-                @JsonProperty("ossSchemaVersion") String ossSchemaVersion,
-                @JsonProperty("ruleId") String ruleId) {
+                       @JsonProperty("object") Object object,
+                       @JsonProperty("ossSchemaVersion") String ossSchemaVersion,
+                       @JsonProperty("ruleId") String ruleId) {
                 this.bucket = bucket;
                 this.object = object;
                 this.ossSchemaVersion = ossSchemaVersion;
@@ -72,9 +74,9 @@ public final class OSSEvent {
 
                 @JsonCreator
                 public Bucket(@JsonProperty("arn") String arn,
-                    @JsonProperty("name") String name,
-                    @JsonProperty("ownerIdentity") String ownerIdentity,
-                    @JsonProperty("virtualBucket") String virtualBucket) {
+                              @JsonProperty("name") String name,
+                              @JsonProperty("ownerIdentity") String ownerIdentity,
+                              @JsonProperty("virtualBucket") String virtualBucket) {
                     this.arn = arn;
                     this.name = name;
                     this.ownerIdentity = ownerIdentity;
@@ -88,16 +90,61 @@ public final class OSSEvent {
                 public final String eTag;
                 public final String key;
                 public final long size;
+                public final long position;
+                public final long readFrom;
+                public final long readTo;
+                public final ObjectMeta objectMeta;
 
                 @JsonCreator
                 public Object(@JsonProperty("deltaSize") long deltaSize,
-                    @JsonProperty("eTag") String eTag,
-                    @JsonProperty("key") String key,
-                    @JsonProperty("size") long size) {
+                              @JsonProperty("eTag") String eTag,
+                              @JsonProperty("key") String key,
+                              @JsonProperty("size") long size,
+                              @JsonProperty("position") long position,
+                              @JsonProperty("readFrom") long readFrom,
+                              @JsonProperty("readTo") long readTo,
+                              @JsonProperty("objectMeta") ObjectMeta objectMeta) {
                     this.deltaSize = deltaSize;
                     this.eTag = eTag;
                     this.key = key;
                     this.size = size;
+                    this.position = position;
+                    this.readFrom = readFrom;
+                    this.readTo = readTo;
+                    this.objectMeta = objectMeta;
+                }
+
+                public static final class ObjectMeta {
+                    public final String mimeType;
+                    public final String cacheControl;
+                    public final String contentEncoding;
+                    public final String contentDisposition;
+                    public final String expires;
+                    public final String contentLanguage;
+                    public final String accessControlAllowOrigin;
+                    public final Map<String, String> userMeta;
+                    public final Map<String, String> persistentMeta;
+
+                    @JsonCreator
+                    public ObjectMeta(@JsonProperty("mimeType") String mimeType,
+                                      @JsonProperty("cacheControl") String cacheControl,
+                                      @JsonProperty("contentEncoding") String contentEncoding,
+                                      @JsonProperty("contentDisposition") String contentDisposition,
+                                      @JsonProperty("expires") String expires,
+                                      @JsonProperty("contentLanguage") String contentLanguage,
+                                      @JsonProperty("accessControlAllowOrigin") String accessControlAllowOrigin,
+                                      @JsonProperty("userMeta") Map<String, String>  userMeta,
+                                      @JsonProperty("persistentMeta") Map<String, String>  persistentMeta) {
+                        this.mimeType = mimeType;
+                        this.cacheControl = cacheControl;
+                        this.contentEncoding = contentEncoding;
+                        this.contentDisposition = contentDisposition;
+                        this.expires = expires;
+                        this.contentLanguage = contentLanguage;
+                        this.accessControlAllowOrigin = accessControlAllowOrigin;
+                        this.userMeta = userMeta;
+                        this.persistentMeta = persistentMeta;
+                    }
                 }
             }
         }
